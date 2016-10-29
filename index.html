@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tim Bytes</title>
+	<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+	<link href="blog.css" rel="stylesheet">
+	<style>
+	 /*
+	 * Masthead for nav
+	 */
+		.blog-masthead {
+			background-color: #428bca;
+ 			-webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+          		box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+		}
+
+	/* Nav links */
+		.blog-nav-item {
+		  position: relative;
+		  display: inline-block;
+		  padding: 10px;
+		  font-weight: 500;
+		  color: #cdddeb;
+		}
+		.blog-nav-item:hover,
+		.blog-nav-item:focus {
+		  color: #fff;
+		  text-decoration: none;
+		}
+		.blog-header {
+		  padding-top: 20px;
+		  padding-bottom: 20px;
+		}
+		.blog-title {
+		  margin-top: 30px;
+		  margin-bottom: 0;
+		  font-size: 60px;
+		  font-weight: normal;
+		}
+		.blog-description {
+		  font-size: 20px;
+		  color: #999;
+		}
+		/*
+		 * Main column and sidebar layout
+		 */
+
+		.blog-main {
+		  font-size: 18px;
+		  line-height: 1.5;
+		}
+
+		/* Sidebar modules for boxing content */
+		.sidebar-module {
+		  padding: 15px;
+		  margin: 0 -15px 15px;
+		}
+		.sidebar-module-inset {
+		  padding: 15px;
+		  background-color: #f5f5f5;
+		  border-radius: 4px;
+		}
+		.sidebar-module-inset p:last-child,
+		.sidebar-module-inset ul:last-child,
+		.sidebar-module-inset ol:last-child {
+		  margin-bottom: 0;
+		}
+
+
+		.blog-post {
+		  margin-bottom: 60px;
+		}
+		.blog-post-title {
+		  margin-bottom: 5px;
+		  font-size: 40px;
+		}
+		.blog-post-meta {
+		  margin-bottom: 20px;
+		  color: #999;
+		}
+
+
+		/*
+		 * Footer
+		 */
+
+		.blog-footer {
+		  padding: 40px 0;
+		  color: #999;
+		  text-align: center;
+		  background-color: #f9f9f9;
+		  border-top: 1px solid #e5e5e5;
+		}
+		.blog-footer p:last-child {
+		  margin-bottom: 0;
+		}
+	</style>
+</head>
+<body>
+
+<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="#">Work</a>
+        </nav>
+      </div>
+    </div>
+
+	<div class="container">
+        <div class="blog-header">
+        <h1 class="blog-title">TimBytes</h1>
+        <p class="lead blog-description">Created 2016</p>
+      </div>
+
+<div class="row">
+
+<div class="col-sm-8 blog-main">
+
+<div class="blog-post">
+<h2>Decomposing git init</h2>
+<p>Makes the current directory int a git repository. To do this, it creates a .git directory and writes some files to it. They define configuration and history. They are editable.</p>
+</div>
+
+<div class="blog-post">
+<h2>Decomposing git add</h2>
+<p>This has two effects. It creates a blob file that contains the compressed content of the files added. It does this by using a hashing algorithm. Second, it adds the file to the index. The index is a list that contains of every file Git has been told to keep track of. When you make a change to a file, and run git add you will create a new blob.</p>
+<p></p>
+</div>
+
+<div class="blog-post">
+<h2>Decomposing git commit</h2>
+ <pre><code>$git commit -m 'first commit'</code></pre>
+<p>This commit is called 'first commit'. The git command has three steps: it creates a tree graph for the content of the version of the project that is about to be committed. It creates a commit object. It points the current branch at the new commit object.</p>
+<h3>Create a tree graph</h3>
+<p>Git records the state of the project by creating a tree graph from the index. The graph is composed of two types of objects: blobs and trees. Blobs are stored by git add. Trees are stored when a commit is made. A tree represents a directory in the working copy.</p>
+</div>
+
+<div class="blog-post">
+<h2 class="blog-post-title">Operating Systems: Part 2 Processes</h2>
+<p class="blog-post-meta">October 23, 2016 by Tim</p>
+<p>
+A process is a software object that represenets a running program. An object is a contains data and provides methods that operate on data. A process is an object that contains the following data:
+<ul>
+<li>The text of a program, usually a sequence of machine language instructions.</li>
+<li>Data associated with the program, including static data (allocated at compile time) and dynamic data including the run time stack and the heap.</li>
+<li>The state if any pending input/output operations. For example, if the process is waiting for data to be read from disk or for a packet to arrive on a network, the status of these operations is part of the process.</li>
+<li>The hardware state of the program, which includes data stored in registers, the status information, and the program counter, which indicates which instruction is currently executing.</li>
+</ul>
+</p>
+</div>
+
+<div class="blog-post">
+<h2 class="blog-post-title">Operating Systems: Under the Hood Part 1</h2>
+<p class="blog-post-meta">October 23, 2016 by Tim</p>
+<p>
+People often tend to think of programming languages as either compiled or interpreted. But the distinction is not always as clear cut. 
+</p>
+<p>First, many languages can be either compiled or interpreted. There are C interpreters and Python compilers. Java uses a hybrid approach, compiling programs into an intermediate language and then running the translated program in an interpreter. The intermediate language is called Java bytecode, which is similar to machine language , but is executed by a software interpreter, the Java Virtual Machine.</p>
+
+<p>
+This is the C complilation process:
+<ul>
+<li> Preprocessing: C includes "preprocessor directives" that take effect before the program is compiled. For example #include directive causes the source code from another file to be inserted at the location of the directive.
+</li>
+<li>Parsing: During parsing, the compiler reads the source code and builds an internal representation of the program, called an "abstract syntax tree." Errors detected at this step are usually sytax errors.</li>
+<li>Static Checking: The compiler checks whether variables and values have the right type, whether functions are called with the right number and type of arguments. Errors detected during this step are sometimes called "static semantic" errors.</li>
+<li>Code generation: The compiler reads the internal representation of the program and develops bytecode</li>
+<li>Linking: If the program uses values and functions defined in a library, the compiler has to find the appropriate library and include the required code.</li>
+<li>Optimization: At several points in the process, the compiler can transform the program to generate code that runs faster or uses less space. Most optimizations are simple changes that eliminate obvious waste, but some compilers perform sophisticated analysis and transformations.</li>
+</ul>
+</p>
+</div>
+
+<div class="blog-post">
+<h2 class="blog-post-title">Object Oriented Design Part 1</h2>
+<p class="blog-post-meta">October 23, 2016 by Tim</p>
+<p>
+<em>Class versus Interface Inheretence</em>. An object's class defines how the object is to be implemented. The class determines the objects internal state and the imlementation of its operations.In contrast the objects type refers to interface-the set of requests to which it can respond. An object can have many types, and objects of different classes can have the same type.
+</p>
+<p>
+<em>Interface versus implementation.</em> When inheritance is used carefully, all classes derived from an abstract class will share its interface. This implies that a subclass merely adds or overrides operations and does not hide operations of the parent class. All subclasses can then respond to the requests in the interface of this abstract class, making them all subtypes of the abstract class. 
+</p>
+<p>This greatly reduces implementation dependencies between subsystems that it leads to the following principle of reusable object-oriented design: <em>Program to interface, not an implementation.</em></p>
+<p><em>Inheritance versus Composition</em>. The two most common techniques for reusing functionality in object-oriented systems are class inheritance and object composition. As we've explained, inheritance lets you define the implementationof one class in terms of another's. Reuse by subclassing is often referred to white box reuse.</p>
+<p>Object composititon  is an alternative to class inheritance. Here, new functionality is obtained by assembling or composing objects to get more complex functionality. Object composition requires that the objects being composed have well-defined interfaces. This style of reuse is called black-box reuse, because no details of an object are visible.  
+</p>
+<p>Inheritance and composition each have their advantages and disadavntages. Class inheritence is defined statically at compile-time and is straightforward to use, since it's supported directly by the programming language.Class inheritance also makes it easier to modify the implementation being reused. When a subclass overrides some but not all operations, it can affect the operations it inherits as well, assuming they call the overidden operations. But class inheritence has some disadvantages, too. First you can't choose the implementations inherited for the parent at run-time, because inheritence is defined at compile-time. Second, and generally worse, parent classes often define at least compile-time. Second, and generally worse, parent classes often define at least part of their subclasses physical representation. Because inheritance exposes a subclass to details of its parent's implementation, it's often said that "inheritence break encapsulation". The implementation of a subclass bcomes so bound up with the implementation of its parent class that any change in the parent's implementation will force the subclass to change, 
+</p>
+<p><em>Inheritance vs. Composition</em>. The Gang of Four tell us to value object composition over inheritance. It's their opinion that many developers overuse inheritance leading to large unstable systems. Think carefully about the composition of your classes and take care to see that the relationships between subclasses are few but strong. 
+</p>
+<p><em>Delegation</em>. In delegation two objects are used in handling a request: a receiving object delegate operations to its delegate.This is analagous to subclasses defering requests to its parent classes. But with inheretence, an inherited operation can always refer to the receiving variable as self. To achieve the same in delegation, the reciver passes itself to the delegate to let the delegated operation refer to the reciever.</p>
+</div>
+<div class="blog-post">
+<h2 class="blog-post-title">Dulles in Bern</h2>
+            <p class="blog-post-meta">October 22, 2016 by Tim</p>
+
+            <p>Dulles arrives in Bern in early 1942. All of Europe is occupied by the Axis, and Stalingrad has not yet turned the tide of the war on the Eastern Front. Dulles is behind enemy lines in Switzerland, however in some way he's at home. He worked in Bern for the State Department during the First World War and his company did business in Berlin.
+</p>
+<p> Talbot, the author of the book, accuses Dulles of using his role during the war to protect his corporate clients with holdings in Europe. Foster at this time was in New York at Sullivan and Cromwell hiding the U.S. assets of IG Farben and Merck KGaA.. As both Dulles advise large corporations in New York, they probably see the encroachment of the Soviet Union and the march of the Red Army west as the true enemy to its client's assets, as the Soviet Union will likely confiscate property. Talbot states that the Dulles brothers used financing from American companies like General Motors, General Electric, and DuPot Chemical to invest in German industrial companies like IG Farben and Volkwagon during the war. Per Talbot, Dulles sees his role in the OSS as an opportunity to help his corporate clients in the United States, and is distrustful of what will happen when a peace settlment is made with the Soviet Union.</p>
+<p>In March of 1945, Dulles makes a peace agreement with Waffen-SS General Wolff to hand over Northern Italy to the United States. This happens two months before VE day, and prevents Northern Italy from coming under communist control. Immediately after the war this becomes the border of the iron curtain, west Germany and Italy become part of NATO, while Austria and East Germany become satellites of the Soviet Union. In return for surrender his surrender, Dulles promises to keep General Wolff from a trial in Nuremberg.  
+</p>
+<p> A paragraph about General Wolff
+</p>
+<p> Talbot's evidence shows that Allen Dulles had full knowledge of the Holocaust from those living in Nazi occupied territory. Dulles never brought attention to this in his wires to Washington. IG Farben was Germany's largest chemical conglomerate and produced Zyklon B, a pesticide used in the Nazi death camps in Poland. IG Farben was also a client of Dulles, did he know the company was producing the chemical killing millions of people in Nazi death camps as well?  
+</p>
+
+        </div><!-- /.blog-post -->
+
+
+<div class="blog-post">
+<h2 class="blog-post-title">Kennedy, CIA, and the Bay of Pigs</h2>
+            <p class="blog-post-meta">October 21, 2016 by Tim</p>
+
+            <p>I'm a web entreprenuer and avid conspiracy theorist</p>
+            <hr>
+            <p>I've come across a new book called <em>The Devil's Chessboard</em>. It details the life of Alan Dulles. Allen Dulles led an interesting life, in his early twenties he served in the diplomatic corps in Europe during the First World War. Became a partner at New York law firm Sullivan and Cromwell, where he advised clients like AT&T and General Motors. He led a movement in the law firm to close the Berlin office in 1935, arguing over the issue with his brother Foster Dulles, who was also a partner and later became Secratary of State under Eisenhower. During the Second World War Dulles becomes station chief for the OSS in Bern, Switzerland. He organizes the surrender of Northern Italy with Waffen-SS General Karl Wolff, in March of 1945 two months before VE day. Following the war, he serves as a senior official in the CIA, eventually as Director from 1953, to his firing after the Bay of Pigs. <a href="https://www.amazon.com/Devils-Chessboard-Dulles-Americas-Government/dp/0062276174">On Amazon</a>
+</p>
+<p>Dulles has the look of a University professor, but his story is far more Machiavellian. 
+</p>
+
+<p> The book makes me want to build a webapp dedicated to the storyline of the dark side of the Second World War. The preppy backgrounds of Kennedy and Dulles. The dirty tricks of the early CIA. If you think about the acts of the CIA direcly after the Second World War it was a string of infamous success that leads you to believe that the United States is omniscient superpower. Examples like Iran and rigging elections in Italy and Greece. Post Vietnam however is a string of failures from the Iran hostages to Iraq's WMD. Perhaps it was men like Dulles who gave the CIA and the United States its mistique? 
+</p>
+        </div><!-- /.blog-post -->
+
+
+<div class="blog-post">
+<h2 class="blog-post-title">First blog</h2>
+            <p class="blog-post-meta">October 21, 2016 by Tim</p>
+
+            <p>My name is Tim. I've build and discarded many personal software projects before this one. Hope this stays up on the internet.</p>
+            <hr>
+            <p>I'm going to start this blog with my favorite quote. From Marcus Aurelius</p>
+            <blockquote>
+              <p>Remember how long thou hast been putting off these things, and how often thou hast received an opportunity from the gods, and yet dost not use it. Thou must now at last perceive of what universe thou art a part, and of what administrator of the universe thy existence is an efflux, and that a limit of time is fixed for thee, which if thou dost not use for clearing away the clouds from thy mind, it will go and thou wilt go, and it will never return.</p>
+            </blockquote>
+            <p>Thinking of getting it tattooed on my arm in ancient greek. Will update. <a href="http://hereistoday.com">A website that will make you depressed about your smalllness in time</a></p>
+        </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>My name is Tim McHale. I'm a dev. This is my website.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/trmchale1">GitHub</a></li>
+            <li><a href="https://www.facebook.com/tim.mchale.35">Facebook</a></li>
+		</ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>    
+</body>
+</html>
